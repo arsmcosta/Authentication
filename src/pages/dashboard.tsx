@@ -6,7 +6,17 @@ export default function Dashboard() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    api.get('/me').then(response => console.log(response))
-  }, [])
-  return <h1>Dashboard: {user?.email}</h1>;
+    api
+      .get("/me")
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  }, []);
+  return (
+    <>
+     <h1>email: {user?.email}</h1>
+     <h2>permissions: {user?.permissions}</h2>
+     <h3>roles: {user?.roles}</h3>
+    </>
+   
+  )
 }
